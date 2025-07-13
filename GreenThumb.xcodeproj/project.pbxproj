@@ -6,17 +6,32 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		EF8B78C92E237BBC00616328 /* VegetableListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B78C62E237BBC00616328 /* VegetableListScreen.swift */; };
+		EF8B78CA2E237BBC00616328 /* GreenThumbApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B78C72E237BBC00616328 /* GreenThumbApp.swift */; };
+		EF8B78CB2E237BBC00616328 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF8B78C52E237BBC00616328 /* Assets.xcassets */; };
+		EF8B78CE2E237CF300616328 /* VegetableHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B78CD2E237CF300616328 /* VegetableHTTPClient.swift */; };
+		EF8B78D12E237E3900616328 /* Vegetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B78D02E237E3300616328 /* Vegetable.swift */; };
+		EF8B78D42E2387FB00616328 /* VegetableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B78D32E2387FB00616328 /* VegetableCellView.swift */; };
+		EF8B78D72E23894B00616328 /* vegetables.json in Resources */ = {isa = PBXBuildFile; fileRef = EF8B78D62E23893F00616328 /* vegetables.json */; };
+		EF8B78D92E23897500616328 /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B78D82E23897000616328 /* PreviewData.swift */; };
+		EF8B78DC2E2390A100616328 /* VegetableTabBarScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B78DB2E2390A100616328 /* VegetableTabBarScreen.swift */; };
+		EF8B78DE2E23930000616328 /* VegetableDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8B78DD2E23930000616328 /* VegetableDetailScreen.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		EF8B78B72E237BA500616328 /* GreenThumb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GreenThumb.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF8B78C52E237BBC00616328 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EF8B78C62E237BBC00616328 /* VegetableListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VegetableListScreen.swift; sourceTree = "<group>"; };
+		EF8B78C72E237BBC00616328 /* GreenThumbApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenThumbApp.swift; sourceTree = "<group>"; };
+		EF8B78CD2E237CF300616328 /* VegetableHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VegetableHTTPClient.swift; sourceTree = "<group>"; };
+		EF8B78D02E237E3300616328 /* Vegetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vegetable.swift; sourceTree = "<group>"; };
+		EF8B78D32E2387FB00616328 /* VegetableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VegetableCellView.swift; sourceTree = "<group>"; };
+		EF8B78D62E23893F00616328 /* vegetables.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = vegetables.json; sourceTree = "<group>"; };
+		EF8B78D82E23897000616328 /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
+		EF8B78DB2E2390A100616328 /* VegetableTabBarScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VegetableTabBarScreen.swift; sourceTree = "<group>"; };
+		EF8B78DD2E23930000616328 /* VegetableDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VegetableDetailScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		EF8B78B92E237BA500616328 /* GreenThumb */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = GreenThumb;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		EF8B78B42E237BA500616328 /* Frameworks */ = {
@@ -32,7 +47,7 @@
 		EF8B78AE2E237BA500616328 = {
 			isa = PBXGroup;
 			children = (
-				EF8B78B92E237BA500616328 /* GreenThumb */,
+				EF8B78C82E237BBC00616328 /* GreenThumb */,
 				EF8B78B82E237BA500616328 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +58,63 @@
 				EF8B78B72E237BA500616328 /* GreenThumb.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		EF8B78C82E237BBC00616328 /* GreenThumb */ = {
+			isa = PBXGroup;
+			children = (
+				EF8B78D52E23892E00616328 /* PreviewContent */,
+				EF8B78CF2E237E1400616328 /* Models */,
+				EF8B78CC2E237CB400616328 /* Clients */,
+				EF8B78D22E2387E600616328 /* Views */,
+				EF8B78DA2E238E3800616328 /* Screens */,
+				EF8B78C72E237BBC00616328 /* GreenThumbApp.swift */,
+				EF8B78C52E237BBC00616328 /* Assets.xcassets */,
+			);
+			path = GreenThumb;
+			sourceTree = "<group>";
+		};
+		EF8B78CC2E237CB400616328 /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				EF8B78CD2E237CF300616328 /* VegetableHTTPClient.swift */,
+			);
+			path = Clients;
+			sourceTree = "<group>";
+		};
+		EF8B78CF2E237E1400616328 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EF8B78D02E237E3300616328 /* Vegetable.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EF8B78D22E2387E600616328 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EF8B78D32E2387FB00616328 /* VegetableCellView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EF8B78D52E23892E00616328 /* PreviewContent */ = {
+			isa = PBXGroup;
+			children = (
+				EF8B78D82E23897000616328 /* PreviewData.swift */,
+				EF8B78D62E23893F00616328 /* vegetables.json */,
+			);
+			path = PreviewContent;
+			sourceTree = "<group>";
+		};
+		EF8B78DA2E238E3800616328 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				EF8B78C62E237BBC00616328 /* VegetableListScreen.swift */,
+				EF8B78DB2E2390A100616328 /* VegetableTabBarScreen.swift */,
+				EF8B78DD2E23930000616328 /* VegetableDetailScreen.swift */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -59,9 +131,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				EF8B78B92E237BA500616328 /* GreenThumb */,
 			);
 			name = GreenThumb;
 			packageProductDependencies = (
@@ -109,6 +178,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF8B78CB2E237BBC00616328 /* Assets.xcassets in Resources */,
+				EF8B78D72E23894B00616328 /* vegetables.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +190,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF8B78DE2E23930000616328 /* VegetableDetailScreen.swift in Sources */,
+				EF8B78CE2E237CF300616328 /* VegetableHTTPClient.swift in Sources */,
+				EF8B78D42E2387FB00616328 /* VegetableCellView.swift in Sources */,
+				EF8B78D92E23897500616328 /* PreviewData.swift in Sources */,
+				EF8B78D12E237E3900616328 /* Vegetable.swift in Sources */,
+				EF8B78DC2E2390A100616328 /* VegetableTabBarScreen.swift in Sources */,
+				EF8B78C92E237BBC00616328 /* VegetableListScreen.swift in Sources */,
+				EF8B78CA2E237BBC00616328 /* GreenThumbApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
