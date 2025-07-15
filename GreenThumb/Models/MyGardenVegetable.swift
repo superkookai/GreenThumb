@@ -14,6 +14,10 @@ class MyGardenVegetable {
     var plantOption: PlantOption
     var datePlanted: Date
     
+    var daysToHarvest: Int {
+        plantOption == .seed ? vegetable.daysToHarvestSeeds : vegetable.daysToHarvestSeedlings
+    }
+    
     init(vegetable: Vegetable, plantOption: PlantOption, datePlanted: Date = Date()) {
         self.vegetable = vegetable
         self.plantOption = plantOption
