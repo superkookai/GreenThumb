@@ -12,7 +12,7 @@ struct GreenThumbApp: App {
     var body: some Scene {
         WindowGroup {
             VegetableTabBarScreen()
-                .modelContainer(for: [Vegetable.self, MyGardenVegetable.self])
+                .modelContainer(for: [Vegetable.self, MyGardenVegetable.self, Note.self])
         }
     }
 }

@@ -14,6 +14,9 @@ class MyGardenVegetable {
     var plantOption: PlantOption
     var datePlanted: Date
     
+    @Relationship(deleteRule: .cascade)
+    var notes: [Note]?
+    
     var daysToHarvest: Int {
         plantOption == .seed ? vegetable.daysToHarvestSeeds : vegetable.daysToHarvestSeedlings
     }
