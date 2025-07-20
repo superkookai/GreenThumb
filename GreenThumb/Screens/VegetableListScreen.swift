@@ -8,10 +8,20 @@
 import SwiftUI
 
 struct VegetableListScreen: View {
-    @State private var vegetables: [Vegetable] = []
+    let vegetables: [Vegetable]
+    
+    @State private var searchText: String = ""
+    
+    private var filteredVegetables: [Vegetable] {
+        if searchText.isEmpty {
+            return vegetables
+        } else {
+            return vegetables.filter({ $0.name.localizedCaseInsensitiveContains(searchText)})
+        }
+    }
     
     var body: some View {
-        List(vegetables) { vegetable in
+        List(filteredVegetables) { vegetable in
             NavigationLink {
                 VegetableDetailScreen(vegetable: vegetable)
             } label: {
@@ -19,20 +29,13 @@ struct VegetableListScreen: View {
             }
         }
         .listStyle(.plain)
-        .task {
-            do {
-                let client = VegetableHTTPClient()
-                self.vegetables = try await client.fetchVegetables()
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
         .navigationTitle("Vegetables")
+        .searchable(text: $searchText)
     }
 }
 
 #Preview {
     NavigationStack {
-        VegetableListScreen()
+        VegetableListScreen(vegetables: PreviewData.loadVegetables())
     }
 }

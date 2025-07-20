@@ -21,9 +21,7 @@ struct HarvestCountDownView: View {
         max(harvestingDays-daysElapsed, 0)
     }
     
-    private var progress: CGFloat {
-        CGFloat(daysElapsed) / CGFloat(harvestingDays)
-    }
+    @State var progress: CGFloat = 0.0
     
     var body: some View {
         ZStack {
@@ -39,7 +37,6 @@ struct HarvestCountDownView: View {
                 .trim(from: 0, to: progress)
                 .stroke(Color.green, style: StrokeStyle(lineWidth: 8, lineCap: .round))
                 .rotationEffect(.degrees(-90))
-                .animation(.easeInOut(duration: 0.5), value: progress)
             
             //Days Remaining
             VStack {
@@ -55,6 +52,11 @@ struct HarvestCountDownView: View {
             }
         }
         .frame(width: 60, height: 60)
+        .onAppear {
+            withAnimation(.easeInOut(duration: 0.5)) {
+                progress = CGFloat(daysElapsed) / CGFloat(harvestingDays)
+            }
+        }
     }
 }
 

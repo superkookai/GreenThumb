@@ -10,6 +10,16 @@ import SwiftData
 
 struct MyGardenScreen: View {
     @Query private var myGardenVegetables: [MyGardenVegetable]
+    @Environment(\.modelContext) var context
+    
+    private func deleteMyGardenVegetable(myGardenVegetable: MyGardenVegetable) {
+        context.delete(myGardenVegetable)
+        do {
+            try context.save()
+        } catch {
+            print("ERROR TO DELETE: \(error.localizedDescription)")
+        }
+    }
     
     var body: some View {
         List(myGardenVegetables) { myGardenVegetable in
@@ -17,6 +27,12 @@ struct MyGardenScreen: View {
                 NoteListScreen(myGardenVegetable: myGardenVegetable)
             } label: {
                 MyGardenCellView(myGardenVegetable: myGardenVegetable)
+            }
+            .swipeActions {
+                Button("Delete", systemImage: "trash") {
+                    deleteMyGardenVegetable(myGardenVegetable: myGardenVegetable)
+                }
+                .tint(.red)
             }
         }
         .listStyle(.plain)

@@ -70,6 +70,12 @@ struct VegetableDetailScreen: View {
                 DetailRow(icon: "exclamationmark.triangle", title: "Bad Companions", value: vegetable.badCompanions)
                 DetailRow(icon: "heart.fill", title: "Health Benefits", value: vegetable.healthBenefits.isEmpty ? "N/A" : vegetable.healthBenefits)
                 
+                if let pests = vegetable.pests, !pests.isEmpty {
+                    DetailRow(icon: "ladybug", title: "Pests", value: pests.map{$0.name}.joined(separator: ", "))
+                } else {
+                    DetailRow(icon: "ladybug", title: "Pests", value: "N/A")
+                }
+                
                 Divider()
                 
                 SectionHeader(title: "Growing Tips")
@@ -85,6 +91,7 @@ struct VegetableDetailScreen: View {
             }
             .padding()
         }
+        .scrollIndicators(.hidden)
         .navigationTitle(vegetable.name)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {

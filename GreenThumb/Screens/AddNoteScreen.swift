@@ -17,9 +17,14 @@ struct AddNoteScreen: View {
     @State private var selectedPhotoItem: PhotosPickerItem? = nil
     @State private var uiImage: UIImage? = nil
     @State private var imageData: Data? = nil
+    @State private var isCameraSelected = false
     
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var context
+    
+    private var isFormValid: Bool {
+        !noteTitle.isEmptyOrWhiteSpace && !noteBody.isEmptyOrWhiteSpace
+    }
     
     private func saveNote() {
         let note = Note(title: noteTitle, body: noteBody)
@@ -27,6 +32,7 @@ struct AddNoteScreen: View {
         myGardenVegetable.notes?.append(note)
         try? context.save()
     }
+    
     
     var body: some View {
         NavigationStack {
@@ -36,6 +42,22 @@ struct AddNoteScreen: View {
                     .frame(minHeight: 200)
                 
                 HStack(spacing: 20) {
+                    Button {
+                        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                            isCameraSelected = true
+                        }
+                    } label: {
+                        ZStack {
+                            Circle()
+                                .fill(Color.green.opacity(0.2))
+                                .frame(width: 60, height: 60)
+                            Image(systemName: "camera.fill")
+                                .font(.title)
+                                .foregroundColor(.green)
+                        }
+                    }
+
+                    
                     PhotosPicker(selection: $selectedPhotoItem, matching: .images, photoLibrary: .shared()) {
                         ZStack {
                             Circle()
@@ -71,12 +93,19 @@ struct AddNoteScreen: View {
                     }
                 }
             }
+            .sheet(isPresented: $isCameraSelected, content: {
+                ImagePicker(image: $uiImage, sourceType: .camera)
+            })
+            .onChange(of: uiImage, {
+                self.imageData = uiImage?.pngData()
+            })
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Save") {
                         saveNote()
                         dismiss()
                     }
+                    .disabled(!isFormValid)
                 }
                 
                 ToolbarItem(placement: .topBarLeading) {

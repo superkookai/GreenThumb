@@ -1,20 +1,19 @@
 //
-//  MyGardenCellView.swift
+//  PestCellView.swift
 //  GreenThumb
 //
-//  Created by Weerawut Chaiyasomboon on 15/07/2568.
+//  Created by Weerawut Chaiyasomboon on 20/07/2568.
 //
 
 import SwiftUI
-import SwiftData
 
-struct MyGardenCellView: View {
-    let myGardenVegetable: MyGardenVegetable
+struct PestCellView: View {
+    let pest: Pest
     
     var body: some View {
         HStack(alignment: .center, spacing: 16) {
             // Vegetable Thumbnail Image
-            AsyncImage(url: myGardenVegetable.vegetable.thumbnailImage) { image in
+            AsyncImage(url: pest.photo) { image in
                 ZStack {
                     // Gradient Background
                     Circle()
@@ -57,30 +56,23 @@ struct MyGardenCellView: View {
                 }
             }
             
+            // Vegetable Details
             VStack(alignment: .leading, spacing: 4) {
-                Text(myGardenVegetable.vegetable.name)
+                Text(pest.name)
                     .font(.headline)
                     .foregroundColor(.primary)
-                HStack {
-                    Image(systemName: myGardenVegetable.plantOption.icon)
-                        .foregroundStyle(.green)
-                    
-                    if let notes = myGardenVegetable.notes, !notes.isEmpty {
-                        Image(systemName: "list.clipboard")
-                            .foregroundStyle(.green)
-                    }
-                }
+                
+                Text(pest.body)
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                    .lineLimit(2) // Limit to 2 lines for cleaner appearance
             }
-            
-            Spacer()
-            
-            HarvestCountDownView(plantingDate: myGardenVegetable.datePlanted, harvestingDays: myGardenVegetable.daysToHarvest)
         }
-        .padding()
     }
 }
 
-#Preview(traits: .sampleData) {
-    @Previewable @Query var myGardenVegetables: [MyGardenVegetable]
-    MyGardenCellView(myGardenVegetable: myGardenVegetables[1])
+#Preview {
+    let pests = PreviewData.loadPests()
+    
+    PestCellView(pest: pests[0])
 }

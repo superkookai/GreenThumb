@@ -14,30 +14,16 @@ struct NoteListScreen: View {
     @State private var addNotePresented: Bool = false
     
     var body: some View {
-        List(myGardenVegetable.notes ?? []) { note in
-            HStack(alignment: .center) {
-                if let photoData = note.photo, let uiImage = UIImage(data: photoData) {
-                    Image(uiImage: uiImage)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 75, height: 75)
-                        .clipShape(.circle)
-                        .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
-                    
-                } else {
-                    Image(systemName: "photo.artframe.circle")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 75, height: 75)
-                        .clipShape(.circle)
-                        .foregroundStyle(.secondary)
-                        .shadow(color: .black.opacity(0.2), radius: 4, x: 0, y: 2)
+        ZStack {
+            if let notes = myGardenVegetable.notes, !notes.isEmpty {
+                List(notes) { note in
+                    NoteCellView(note: note, placeHolderImage: myGardenVegetable.vegetable.thumbnailImage)
                 }
-                
-                Text(note.title)
+                .listStyle(.plain)
+            } else {
+                ContentUnavailableView("No Any Notes", systemImage: "pencil.and.list.clipboard.rtl")
             }
         }
-        .listStyle(.plain)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Add Note") {

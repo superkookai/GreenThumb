@@ -36,6 +36,9 @@ class Vegetable: Decodable {
     var daysToHarvestSeedlings: Int
     var healthBenefits: String
     
+    @Relationship(deleteRule: .nullify)
+    var pests: [Pest]?
+    
     required init(from decoder: Decoder) throws {
         
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -64,7 +67,7 @@ class Vegetable: Decodable {
         self.daysToHarvestSeeds = try container.decode(Int.self, forKey: .daysToHarvestSeeds)
         self.daysToHarvestSeedlings = try container.decode(Int.self, forKey: .daysToHarvestSeedlings)
         self.healthBenefits = try container.decode(String.self, forKey: .healthBenefits)
-        
+        self.pests = try container.decode([Pest].self, forKey: .pests)
     }
     
     enum CodingKeys: String, CodingKey {

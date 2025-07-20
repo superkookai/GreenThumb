@@ -18,4 +18,13 @@ struct PreviewData {
             fatalError("ERROR Fetching Vegetables from JSON file")
         }
     }
+    
+    static func loadPests() -> [Pest] {
+        let vegetables = loadVegetables()
+        let allPests = vegetables.flatMap{ $0.pests ?? [] }
+        return Array(Set(allPests.map { $0.name.lowercased() }))
+            .compactMap { name in
+                allPests.first { $0.name.lowercased() == name }
+            }
+    }
 }
